@@ -1,5 +1,7 @@
 import express,{Application} from 'express';
 //,{Application} trae de express el tipo de dato
+import morgan from 'morgan';
+import cors from 'cors';
 import vehiculo from './routes/vehiculo';
 import personaje from './routes/personaje';
 class Server {
@@ -12,11 +14,13 @@ class Server {
 
     config(): void{
         this.app.set('port', process.env.PORT ||3000);
+        this.app.use(morgan('dev'));
+        this.app.use(cors());
     }
     routes(): void{
         // añade las rutas a usar
         this.app.use('/vehiculos',vehiculo);
-        this.app.use('/personaje',personaje);
+        this.app.use('/',personaje);
     }
     start() : void{
         this.app.listen( this.app.get('port')

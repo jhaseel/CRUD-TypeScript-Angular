@@ -5,6 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 //,{Application} trae de express el tipo de dato
+const morgan_1 = __importDefault(require("morgan"));
+const cors_1 = __importDefault(require("cors"));
 const vehiculo_1 = __importDefault(require("./routes/vehiculo"));
 const personaje_1 = __importDefault(require("./routes/personaje"));
 class Server {
@@ -15,11 +17,13 @@ class Server {
     }
     config() {
         this.app.set('port', process.env.PORT || 3000);
+        this.app.use(morgan_1.default('dev'));
+        this.app.use(cors_1.default());
     }
     routes() {
         // añade las rutas a usar
         this.app.use('/vehiculos', vehiculo_1.default);
-        this.app.use('/personaje', personaje_1.default);
+        this.app.use('/', personaje_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
