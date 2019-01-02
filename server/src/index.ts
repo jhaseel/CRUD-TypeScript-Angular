@@ -1,6 +1,7 @@
 import express,{Application} from 'express';
 //,{Application} trae de express el tipo de dato
-import routes from './routes/routes';
+import vehiculo from './routes/vehiculo';
+import personaje from './routes/personaje';
 class Server {
  public app: Application; 
     constructor(){
@@ -14,7 +15,8 @@ class Server {
     }
     routes(): void{
         // añade las rutas a usar
-        this.app.use(routes);
+        this.app.use('/vehiculos',vehiculo);
+        this.app.use('/personaje',personaje);
     }
     start() : void{
         this.app.listen( this.app.get('port')

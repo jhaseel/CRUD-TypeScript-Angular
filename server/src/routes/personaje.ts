@@ -1,16 +1,16 @@
 import {Router} from 'express';
 
-class indexRoutes{
+class Personaje{
     public router: Router = Router();
     constructor(){
         this.config();
     }
     config() : void {
         // añade las diferentes rutas
-        this.router.get('/', (req, res) =>res.send('hola'));
+        this.router.get('/', (req, res) =>res.send('personajes'));
     }
 }
 
-const router = new indexRoutes();
+const personaje = new Personaje();
 // exporta el router de la clase indexRoutes
-export default router.router;
+export default personaje.router;
