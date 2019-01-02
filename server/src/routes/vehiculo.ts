@@ -1,4 +1,6 @@
 import {Router} from 'express';
+import VehiculoController from '../controllers/vehiculoController';
+import vehiculoController from '../controllers/vehiculoController';
 
 class Vehiculo{
     public router: Router = Router();
@@ -7,7 +9,7 @@ class Vehiculo{
     }
     config() : void {
         // añade las diferentes rutas
-        this.router.get('/', (req, res) =>res.send('vehiculos'));
+        this.router.get('/',vehiculoController.index);
     }
 }
 

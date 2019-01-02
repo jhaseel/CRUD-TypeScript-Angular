@@ -1,4 +1,5 @@
 import {Router} from 'express';
+import PersonajeController from '../controllers/personajeController';
 
 class Personaje{
     public router: Router = Router();
@@ -7,7 +8,7 @@ class Personaje{
     }
     config() : void {
         // añade las diferentes rutas
-        this.router.get('/', (req, res) =>res.send('personajes'));
+        this.router.get('/', PersonajeController.index );
     }
 }
 
