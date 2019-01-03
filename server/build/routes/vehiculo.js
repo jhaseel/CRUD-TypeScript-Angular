@@ -12,7 +12,11 @@ class Vehiculo {
     }
     config() {
         // añade las diferentes rutas
-        this.router.get('/', vehiculoController_1.default.index);
+        this.router.post('/', vehiculoController_1.default.registro);
+        this.router.delete('/:id', vehiculoController_1.default.borrar);
+        this.router.put('/:id', vehiculoController_1.default.actualizar);
+        this.router.get('/', vehiculoController_1.default.listar);
+        this.router.get('/buscar/:id', vehiculoController_1.default.buscar);
     }
 }
 const vehiculo = new Vehiculo();
